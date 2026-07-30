@@ -5,6 +5,7 @@ import HeroImage from "@/components/HeroImage";
 import ItineraryCarousel from "@/components/ItineraryCarousel";
 import QuickEnquiryCTA from "@/components/QuickEnquiryCTA";
 import DestinationsOffered from "@/components/DestinationsOffered";
+import TourGuarantee from "@/components/TourGuarantee";
 import TwelveReasons from "@/components/TwelveReasons";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
@@ -90,21 +91,21 @@ export default function DestinationPage({ params }: { params: { slug: string } }
               className="object-cover object-center"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/30 from-0% via-transparent via-35% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/85 from-0% via-white/40 via-35% to-transparent" />
 
           <div className="relative flex h-[560px] flex-col justify-end pb-10 pt-28 sm:h-[580px] sm:pb-14 sm:pt-32 lg:h-[650px]">
             <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
               {/* Breadcrumb */}
-              <nav className="mb-6 flex items-center gap-2 text-xs text-white/50">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <nav className="mb-6 flex items-center gap-2 text-xs text-stone-500">
+                <Link href="/" className="hover:text-stone-900 transition-colors">Home</Link>
                 <span>/</span>
-                <Link href="/#all-destinations" className="hover:text-white transition-colors">Destinations</Link>
+                <Link href="/#all-destinations" className="hover:text-stone-900 transition-colors">Destinations</Link>
                 <span>/</span>
-                <span className="text-white/80">{dest.name}</span>
+                <span className="text-stone-800">{dest.name}</span>
               </nav>
 
               {/* Continent badge */}
-              <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/70">
+              <span className="inline-block rounded-full border border-stone-900/15 bg-white/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-stone-700">
                 {dest.continent}
               </span>
 
@@ -117,14 +118,14 @@ export default function DestinationPage({ params }: { params: { slug: string } }
                     width={56}
                     height={56}
                     decoding="async"
-                    className="h-12 w-12 rounded-full object-cover ring-2 ring-white/70 shadow-lg sm:h-14 sm:w-14"
+                    className="h-12 w-12 rounded-full object-cover ring-2 ring-stone-900/10 shadow-lg sm:h-14 sm:w-14"
                   />
                 )}
-                <h1 className="font-serif text-5xl font-bold text-white sm:text-6xl lg:text-7xl">
+                <h1 className="font-serif text-5xl font-bold text-stone-900 sm:text-6xl lg:text-7xl">
                   {dest.name}
                 </h1>
               </div>
-              <p className="mt-3 text-xl text-white/70 font-light italic">{dest.tagline}</p>
+              <p className="mt-3 text-base text-stone-600 font-light italic sm:text-lg">{dest.tagline}</p>
 
               <SocialLinks className="mt-8" />
             </div>
@@ -139,6 +140,9 @@ export default function DestinationPage({ params }: { params: { slug: string } }
             </p>
           </div>
         </section>
+
+        {/* ── TOUR GUARANTEE & TRANSPARENT PRICING (same as the home page) ── */}
+        <TourGuarantee />
 
         {/* ── SIGNATURE ITINERARIES (come first, right after the intro) ── */}
         {dest.itineraries && dest.itineraries.length > 0 && (

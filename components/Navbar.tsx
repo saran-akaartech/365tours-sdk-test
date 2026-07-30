@@ -151,31 +151,27 @@ export default function Navbar() {
             </a>
           </div>
           {onIndiaPage ? (
-            <Link href="/" className="flex shrink-0 flex-col items-center gap-1">
-              <span className="rounded-xl bg-white p-1.5 shadow-md ring-1 ring-black/5">
-                <Image
-                  src="/brand/7_countries.png"
-                  alt="7 Continents · 100 Countries · 1500+ Destinations"
-                  width={192}
-                  height={133}
-                  className="h-auto w-[150px] rounded-sm object-contain"
-                />
-              </span>
+            <Link href="/" className="flex shrink-0 flex-col items-center justify-center gap-1">
+              <Image
+                src="/brand/7_countries.png"
+                alt="7 Continents · 100 Countries · 1500+ Destinations"
+                width={192}
+                height={133}
+                className="h-auto w-[150px] object-contain"
+              />
               <span className="text-[11px] font-semibold text-stone-900">
                 International Holidays
               </span>
             </Link>
           ) : (
-            <Link href="/india" className="flex shrink-0 flex-col items-center gap-1">
-              <span className="rounded-xl bg-white p-1.5 shadow-md ring-1 ring-black/5">
-                <Image
-                  src="/brand/india_logo.jpg"
-                  alt="28 States · 8 UT · 500+ Destinations across India"
-                  width={180}
-                  height={131}
-                  className="h-auto w-[150px] rounded-sm object-contain"
-                />
-              </span>
+            <Link href="/india" className="flex shrink-0 flex-col items-center justify-center gap-1">
+              <Image
+                src="/brand/india_logo.png"
+                alt="28 States · 8 UT · 500+ Destinations across India"
+                width={180}
+                height={131}
+                className="h-auto w-[150px] object-contain"
+              />
               <span className="text-[11px] font-semibold text-stone-900">
                 Indian Holidays
               </span>
@@ -308,7 +304,7 @@ export default function Navbar() {
                 className="flex w-fit items-center gap-3 border-t border-stone-100 pt-4"
               >
                 <Image
-                  src="/brand/india_logo.jpg"
+                  src="/brand/india_logo.png"
                   alt="28 States · 8 UT · 500+ Destinations across India"
                   width={180}
                   height={131}

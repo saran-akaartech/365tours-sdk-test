@@ -21,7 +21,7 @@ export default function TermsOfUsePage() {
 
           <div className="mt-10 space-y-8 text-stone-600 leading-relaxed">
             <section>
-              <h2 className="font-serif text-2xl font-bold text-stone-900">
+              <h2 className="font-serif text-base font-bold text-stone-900 sm:text-lg">
                 Agreement Between User and VRJ World Wide Holidays / 365 Tours
               </h2>
               <p className="mt-3">
@@ -112,7 +112,7 @@ export default function TermsOfUsePage() {
                 <a href="tel:+919840148869" className="font-semibold text-brand-600 hover:underline">
                   +91 98401 48869
                 </a>
-                .
+                . 37 1st Street, Singaravelan Nagar, Maduravoyal, Chennai – 600 095, India.
               </p>
             </section>
 

@@ -10,9 +10,9 @@ const guarantees = [
 
 export default function TourGuarantee() {
   return (
-    <section id="tour-guarantee" className="bg-white py-10">
+    <section id="tour-guarantee" className="bg-white pt-6 pb-10">
       <div className="mx-auto max-w-6xl px-6 text-center lg:px-10">
-        <h2 className="font-serif text-3xl font-bold text-stone-900 sm:text-4xl">
+        <h2 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
           Our Tour Guarantee &amp; Enhancement
         </h2>
 
@@ -21,7 +21,7 @@ export default function TourGuarantee() {
           {guarantees.map((g, i) => (
             <div
               key={g.n}
-              className={`flex flex-col items-center bg-white px-4 py-8 ${
+              className={`flex flex-col items-center bg-white px-2 py-8 sm:px-3 ${
                 i === guarantees.length - 1
                   ? "col-span-2 justify-self-center sm:col-span-1 sm:justify-self-auto"
                   : ""
@@ -31,14 +31,14 @@ export default function TourGuarantee() {
                 {g.n}
               </span>
               <span className="mt-4 h-[2px] w-10 bg-[linear-gradient(to_right,#0054A5_0%,#0054A5_15%,#f79618_15%,#f79618_60%,#8BC53F_60%,#8BC53F_100%)]" />
-              <p className="mt-4 text-sm font-bold text-stone-900">{g.title}</p>
+              <p className="mt-4 whitespace-nowrap text-xs font-bold text-stone-900 sm:text-sm">{g.title}</p>
               <p className="mt-1.5 text-xs leading-snug text-stone-500">{g.detail}</p>
             </div>
           ))}
         </div>
 
         {/* Transparent pricing guarantee, front and centre */}
-        <div className="mx-auto mt-14 max-w-2xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-8 sm:p-10">
+        <div className="mx-auto mt-14 max-w-2xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-6 sm:p-8">
           <h3 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Our Transparent Pricing Guarantee
           </h3>
@@ -47,7 +47,7 @@ export default function TourGuarantee() {
               <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
                 ✓
               </span>
-              <p className="text-stone-700">
+              <p className="text-sm text-stone-700 sm:text-base">
                 Find a <span className="font-semibold">lower price after you book</span> — exactly
                 as per the package inclusions? We refund the difference.
               </p>
@@ -56,7 +56,7 @@ export default function TourGuarantee() {
               <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
                 ✓
               </span>
-              <p className="text-stone-700">
+              <p className="text-sm text-stone-700 sm:text-base">
                 Find a <span className="font-semibold">lower price before you book</span> — exactly
                 as per the package inclusions? We charge you 5% less.
               </p>

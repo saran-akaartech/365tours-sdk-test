@@ -20,9 +20,9 @@ export default function IndiaDestinationDirectory() {
 
         {/* State-by-state directory — one city per line, matching the original site's listing.
             Every state and city links to the same /india/[state] page, mirroring the source. */}
-        <div className="columns-1 gap-8 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5">
+        <div className="columns-2 gap-8 lg:columns-3 xl:columns-4 2xl:columns-5">
           {sortedStates.map((state) => (
-            <div key={state.name} className="mb-7">
+            <div key={state.name} className="mb-7 break-inside-avoid-column">
               <Link
                 href={`/india/${state.slug}`}
                 className="mb-1.5 inline-block border-b-2 border-stone-800 font-serif text-base font-bold text-stone-900 transition hover:text-brand-600 break-after-avoid"

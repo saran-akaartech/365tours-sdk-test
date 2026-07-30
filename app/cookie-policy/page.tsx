@@ -68,7 +68,7 @@ export default function CookiePolicyPage() {
             </section>
 
             <section>
-              <h2 className="font-serif text-2xl font-bold text-stone-900">
+              <h2 className="font-serif text-base font-bold text-stone-900 sm:text-lg">
                 Information We Collect &amp; Our Purpose for Using Cookies
               </h2>
               <p className="mt-3">

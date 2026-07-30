@@ -76,7 +76,7 @@ export default function DisclaimerPage() {
                 <a href="tel:+919840148869" className="font-semibold text-brand-600 hover:underline">
                   +91 98401 48869
                 </a>
-                .
+                . 37 1st Street, Singaravelan Nagar, Maduravoyal, Chennai – 600 095, India.
               </p>
             </section>
 

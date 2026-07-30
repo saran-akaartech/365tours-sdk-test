@@ -30,9 +30,9 @@ export default function DestinationDirectory() {
         </div>
 
         {/* Compact columnar A-Z listing (no quick-jump nav) */}
-        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 xl:columns-4">
+        <div className="columns-2 gap-6 lg:columns-3 xl:columns-4">
           {letters.map((letter) => (
-            <div key={letter} className="mb-5">
+            <div key={letter} className="mb-5 break-inside-avoid-column">
               <div className="mb-1.5 flex items-center gap-2 break-after-avoid">
                 <span className="font-serif text-lg font-bold text-brand-500">{letter}</span>
                 <span className="h-px flex-1 bg-stone-200" />

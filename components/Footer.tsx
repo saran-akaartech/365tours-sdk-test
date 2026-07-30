@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import SocialLinks from "@/components/SocialLinks";
 
 const links = [
@@ -27,22 +26,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
           {/* Brand col */}
           <div>
-            <span className="inline-flex rounded-lg bg-white p-2 shadow-sm">
-              <Image
-                src="/brand/365logo1.png"
-                alt="365 Tours — Explore, Experience, Evolve"
-                width={174}
-                height={110}
-                className="h-12 w-auto"
-              />
-            </span>
-
-            <p className="mt-6 text-sm leading-relaxed text-stone-400">
-              Designing unforgettable private journeys across 7 continents, 100 countries, and 1500+
-              destinations.
-            </p>
-
-            <div className="mt-8 space-y-2 text-sm text-stone-400">
+            <div className="space-y-2 text-sm text-stone-400">
               <p>37 1st Street, Singaravelan Nagar</p>
               <p>Maduravoyal, Chennai – 600 095, India</p>
               <a href="tel:+919840148869" className="block hover:text-brand-400 transition-colors">

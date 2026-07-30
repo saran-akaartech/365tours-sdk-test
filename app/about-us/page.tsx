@@ -51,56 +51,53 @@ export default function AboutUsPage() {
           </div>
 
           {/* Founder */}
-          <div className="mt-16 grid gap-10 sm:grid-cols-[220px_1fr] sm:items-start">
-            <div className="mx-auto w-48 shrink-0 sm:mx-0 sm:w-full">
-              <div className="relative aspect-square overflow-hidden rounded-3xl shadow-md">
-                <Image
-                  src="/about/jai-portrait.jpg"
-                  alt="Jai Shankar — Founder, 365 Tours"
-                  fill
-                  sizes="220px"
-                  className="object-contain"
-                />
-              </div>
-              <p className="mt-3 text-center text-sm font-semibold text-stone-900 sm:text-left">
-                Jai Shankar
-              </p>
-              <p className="text-center text-xs text-stone-500 sm:text-left">Founder</p>
-            </div>
-
-            <div className="space-y-5 text-stone-600 leading-relaxed">
-              <p>
-                Driven by an unwavering passion for travel and exploration, Jai has journeyed across
-                the globe, experiencing diverse cultures, breathtaking landscapes, and unforgettable
-                destinations firsthand. Every adventure has deepened a profound understanding of what
-                makes a journey truly extraordinary — not just the places visited, but the stories
-                created and memories cherished along the way.
-              </p>
-              <p>
-                Inspired by these experiences, 365 Tours was established in 2007, with a clear
-                vision: to transform ordinary vacations into exceptional travel experiences. Having
-                explored destinations across continents, we bring authentic local insights, carefully
-                curated itineraries, and a keen eye for unique experiences that go beyond traditional
-                sightseeing.
-              </p>
-              <p>
-                With a commitment to excellence, personalised service, and attention to every detail,
-                Jai believes that travel has the power to inspire, connect people, and broaden
-                perspectives. This philosophy continues to shape every journey we design, ensuring
-                each traveller enjoys seamless planning, meaningful experiences, and memories that
-                last a lifetime.
-              </p>
-            </div>
+          <div className="mt-16 space-y-5 text-stone-600 leading-relaxed">
+            <p>
+              Driven by an unwavering passion for travel and exploration, Jai has journeyed across
+              the globe, experiencing diverse cultures, breathtaking landscapes, and unforgettable
+              destinations firsthand. Every adventure has deepened a profound understanding of what
+              makes a journey truly extraordinary — not just the places visited, but the stories
+              created and memories cherished along the way.
+            </p>
+            <p>
+              Inspired by these experiences, 365 Tours was established in 2007, with a clear
+              vision: to transform ordinary vacations into exceptional travel experiences. Having
+              explored destinations across continents, we bring authentic local insights, carefully
+              curated itineraries, and a keen eye for unique experiences that go beyond traditional
+              sightseeing.
+            </p>
+            <p>
+              With a commitment to excellence, personalised service, and attention to every detail,
+              Jai believes that travel has the power to inspire, connect people, and broaden
+              perspectives. This philosophy continues to shape every journey we design, ensuring
+              each traveller enjoys seamless planning, meaningful experiences, and memories that
+              last a lifetime.
+            </p>
           </div>
 
-          {/* Travel photos */}
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:ml-[calc(220px+2.5rem)]">
+          {/* Founder name — its own centered section */}
+          <div className="mt-12 text-center">
+            <p className="text-lg font-semibold text-stone-900">Jai Shankar</p>
+            <p className="text-sm text-stone-500">Founder</p>
+          </div>
+
+          {/* Founder photos — all 3 the same size, together */}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
+              <Image
+                src="/about/jai-portrait.jpg"
+                alt="Jai Shankar — Founder, 365 Tours"
+                fill
+                sizes="(max-width: 640px) 100vw, 300px"
+                className="object-contain"
+              />
+            </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
               <Image
                 src="/about/jai-egypt.jpg"
                 alt="Jai Shankar at the pyramids of Giza, Egypt"
                 fill
-                sizes="(max-width: 640px) 50vw, 300px"
+                sizes="(max-width: 640px) 100vw, 300px"
                 className="object-contain"
               />
             </div>
@@ -109,7 +106,7 @@ export default function AboutUsPage() {
                 src="/about/jai-srilanka.jpg"
                 alt="Jai Shankar on the coast of Sri Lanka"
                 fill
-                sizes="(max-width: 640px) 50vw, 300px"
+                sizes="(max-width: 640px) 100vw, 300px"
                 className="object-contain"
               />
             </div>
@@ -117,7 +114,7 @@ export default function AboutUsPage() {
 
           {/* Social responsibility */}
           <div className="mt-16 rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-8 sm:p-10">
-            <h2 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
+            <h2 className="font-serif text-4xl font-bold text-stone-900 sm:text-5xl">
               Our Social Responsibility
             </h2>
             <p className="mt-3 text-stone-600">
@@ -127,7 +124,7 @@ export default function AboutUsPage() {
               href="/csr"
               className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700"
             >
-              See our CSR initiatives
+              Our CSR Initiatives
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
               </svg>

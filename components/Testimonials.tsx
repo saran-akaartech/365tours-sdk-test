@@ -7,7 +7,7 @@ import ReviewsGrid, { GoogleG, Stars, type CuratedReview } from "@/components/Re
 const GOOGLE_REVIEWS_URL =
   "https://www.google.com/search?q=365+tours+chennai#lrd=0x3a526645a176a84d:0xa79d678833fd18ff,1";
 const RATING = "4.9";
-const RATING_TOTAL = "250";
+const RATING_TOTAL = "252";
 
 const reviews = [
   { name: "Parvathi Sathasivam", trip: "Sri Lanka", slug: "sri-lanka", avatar: "PS",
@@ -42,10 +42,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         {/* Header */}
         <div className="mx-auto mb-10 max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">
-            Traveller Stories
-          </p>
-          <h2 className="mt-3 font-serif text-4xl font-bold text-stone-900 sm:text-5xl">
+          <h2 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Memories to Cherish forever
           </h2>
           <a

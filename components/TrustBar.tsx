@@ -30,7 +30,7 @@ export default function TrustBar() {
               key={g.heading}
               className="flex flex-col items-center rounded-3xl border border-stone-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
-              <p className="font-serif text-lg font-bold text-stone-900">{g.heading}</p>
+              <p className="whitespace-nowrap font-serif text-sm font-bold text-stone-900 sm:text-base">{g.heading}</p>
               <div className="mt-4 flex flex-1 items-center justify-center">
                 <Image
                   src={g.img}

@@ -5,10 +5,7 @@ export default function DestinationsOffered({ name, items }: { name: string; ite
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">
-          Where You&apos;ll Go
-        </p>
-        <h2 className="mt-3 font-serif text-3xl font-bold text-stone-900">
+        <h2 className="font-serif text-3xl font-bold text-stone-900">
           Destinations Offered in {name}
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

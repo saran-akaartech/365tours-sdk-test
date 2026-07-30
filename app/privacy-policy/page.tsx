@@ -241,7 +241,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="font-serif text-2xl font-bold text-stone-900">Permissions Required for Using Our Mobile Applications</h2>
+              <h2 className="font-serif text-base font-bold text-stone-900 sm:text-lg">Permissions Required for Using Our Mobile Applications</h2>
               <p className="mt-3">
                 Where our mobile app requests device permissions, these are used solely to support app
                 functionality — for example, location (to show the nearest branch), SMS (for OTPs and
@@ -290,7 +290,7 @@ export default function PrivacyPolicyPage() {
 
             <section>
               <h2 className="font-serif text-2xl font-bold text-stone-900">Your Rights</h2>
-              <p className="mt-3">
+              <p className="mt-3 text-sm">
                 Under applicable data protection laws (including, where relevant, the GDPR), you have
                 the right to:
               </p>

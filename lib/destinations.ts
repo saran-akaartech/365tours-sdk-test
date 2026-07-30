@@ -351,7 +351,7 @@ export const destinations: Destination[] = [
     name: "Egypt",
     slug: "egypt",
     continent: "Africa",
-    tagline: "Pyramids, pharaohs & Nile river journeys",
+    tagline: "Pharaohs & Nile river journeys",
     description: "Egypt boasts of a spectacular landscape filled with cultural gems. sun, sea & sand interspersed with a touch of exotic culture & heritage, the gushing river Nile, jaw dropping Pyramids, ancient monuments, vast deserts & world famous coral reefs. These are some of the reasons to visit 'GIFT OF THE NILE'.",
     highlights: ["Great Pyramids & Sphinx", "Valley of the Kings", "Luxor Temple by night", "Nile felucca sunset cruise", "Abu Simbel temples"],
     experiences: ["History", "Culture", "Luxury", "Adventure"],
