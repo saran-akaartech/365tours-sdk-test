@@ -151,7 +151,7 @@ export default function Navbar() {
             </a>
           </div>
           {onIndiaPage ? (
-            <Link href="/" className="flex shrink-0 flex-col items-center justify-center gap-1">
+            <Link href="/" className="flex shrink-0 flex-col items-center justify-center gap-1 self-start">
               <Image
                 src="/brand/7_countries.png"
                 alt="7 Continents · 100 Countries · 1500+ Destinations"
@@ -164,7 +164,7 @@ export default function Navbar() {
               </span>
             </Link>
           ) : (
-            <Link href="/india" className="flex shrink-0 flex-col items-center justify-center gap-1">
+            <Link href="/india" className="flex shrink-0 flex-col items-center justify-center gap-1 self-start">
               <Image
                 src="/brand/india_logo.png"
                 alt="28 States · 8 UT · 500+ Destinations across India"
