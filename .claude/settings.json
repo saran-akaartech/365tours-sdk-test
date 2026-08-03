@@ -13,7 +13,10 @@
       "Bash(python3 -c ' *)",
       "Bash(rm -f scratch_test_prefill.mjs)",
       "Bash(taskkill //IM chrome.exe //F)",
-      "Bash(node scripts/generate-country-names.mjs)"
+      "Bash(node scripts/generate-country-names.mjs)",
+      "Bash(lsof -ti:4571 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)",
+      "Bash(lsof -ti:4572 -sTCP:LISTEN)"
     ]
   }
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import os from "os";
+import { parsePhoneNumberFromString } from "libphonenumber-js/min";
 
 export const runtime = "nodejs";
 
@@ -25,6 +26,16 @@ function isValid(lead: LeadPayload): boolean {
   return hasEmail || hasPhone; // at least one way to reach them
 }
 
+// The form submits phone numbers as a compact E.164 string (e.g.
+// "+919840148869" — no spacing), which is the right shape for a CRM/webhook
+// but unreadable in a human-facing email. Reformat it for display only; the
+// webhook/file record below keeps the original compact value untouched.
+function formatPhoneForDisplay(phone: string | undefined): string | undefined {
+  if (!phone) return phone;
+  const parsed = parsePhoneNumberFromString(phone);
+  return parsed?.formatInternational() || phone;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -46,7 +57,7 @@ async function sendLeadEmail(lead: LeadPayload): Promise<void> {
   const rows: [string, string | undefined][] = [
     ["Name", lead.name],
     ["Email", lead.email],
-    ["Phone / WhatsApp", lead.phone],
+    ["Phone / WhatsApp", formatPhoneForDisplay(lead.phone)],
     ["Destination", lead.destination || lead.interests?.join(", ")],
     ["No. of People Travelling", lead.groupSize],
     ["Country / City of Departure", lead.departureCity],

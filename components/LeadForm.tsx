@@ -35,7 +35,15 @@ function formatPhoneDigits(digits: string, iso2: CountryCode): string {
   return digits ? new AsYouType(iso2).input(digits) : "";
 }
 
-const PHONE_PLACEHOLDER = formatPhoneDigits("9840148869", DEFAULT_COUNTRY);
+// A placeholder shaped like a real number for whichever country is currently
+// selected — feeding a long run of a repeated digit through AsYouType gets
+// its grouping/length right without needing a per-country example-number
+// dataset. Previously this was a single constant computed once for India,
+// so switching the country dropdown left an Indian-shaped placeholder
+// showing under every other country.
+function phonePlaceholderFor(iso2: CountryCode): string {
+  return formatPhoneDigits("5".repeat(14), iso2);
+}
 
 export default function LeadForm({
   variant = "full",
@@ -78,14 +86,54 @@ export default function LeadForm({
   ) => setContact((c) => ({ ...c, [field]: e.target.value }));
 
   const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const digits = e.target.value.replace(/\D/g, "");
+    const raw = e.target.value;
     const prevDigits = contact.phone.replace(/\D/g, "");
+
+    // Mobile autofill (iOS/Android "use saved number") hands the field a
+    // full international number in one shot — often with a leading "+" —
+    // which may belong to a different country than whatever the dropdown
+    // still has selected (e.g. India selected, device's own number is a US
+    // one). Reparse it to find its real country and switch the dropdown to
+    // match, instead of running those digits through the wrong country's
+    // mask and producing a garbled hybrid format.
+    if (raw.includes("+")) {
+      const parsed = parsePhoneNumberFromString(raw);
+      if (parsed?.country && parsed.isValid()) {
+        setCountryIso2(parsed.country);
+        setContact((c) => ({ ...c, phone: formatPhoneDigits(parsed.nationalNumber, parsed.country!) }));
+        return;
+      }
+    }
+
+    const digits = raw.replace(/\D/g, "");
+    const isGrowing = digits.length > prevDigits.length;
+
+    // Same autofill/paste case but without a leading "+" (some Android
+    // keyboards fill in raw digits only, and some autofill flows drop the
+    // already-selected country's own calling code onto the front too — e.g.
+    // "919840148869" landing in the field while India is already selected,
+    // 12 digits instead of the expected 10). A jump of more than one digit
+    // in a single change is paste-shaped, not typed — try it as a full
+    // international number: if it resolves, adopt its national number
+    // (correctly stripped of any redundant calling code) and its country,
+    // even when that country turns out to be the same one already selected.
+    // Without this, those extra calling-code digits get run through
+    // AsYouType anyway, don't match any valid India pattern, and fall back
+    // to a generic grouping that reads like a different country's format.
+    if (isGrowing && digits.length - prevDigits.length > 1) {
+      const guess = parsePhoneNumberFromString(`+${digits}`);
+      if (guess?.country && guess.isValid()) {
+        setCountryIso2(guess.country);
+        setContact((c) => ({ ...c, phone: formatPhoneDigits(guess.nationalNumber, guess.country!) }));
+        return;
+      }
+    }
+
     // Once the number is already valid (e.g. a full 10-digit Indian mobile
     // number), stop accepting further digits instead of only catching it on
     // submit. validatePhoneNumberLength alone isn't strict enough here — it
     // allows for every number type a country has (mobile/landline/toll-free/
     // etc.), so e.g. India isn't flagged TOO_LONG until 14 digits.
-    const isGrowing = digits.length > prevDigits.length;
     if (isGrowing && (isValidPhoneNumber(prevDigits, countryIso2) || validatePhoneNumberLength(digits, countryIso2) === "TOO_LONG")) {
       return;
     }
@@ -96,6 +144,11 @@ export default function LeadForm({
     const iso2 = e.target.value as CountryCode;
     setCountryIso2(iso2);
     setContact((c) => ({ ...c, phone: formatPhoneDigits(c.phone.replace(/\D/g, ""), iso2) }));
+    // A number valid for the previous country is very likely invalid for the
+    // new one (different digit count/pattern) purely because it hasn't been
+    // re-entered yet — don't immediately flash the "invalid number" error for
+    // that reason alone. It'll reappear on blur if it's still wrong.
+    setPhoneTouched(false);
   };
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -294,7 +347,7 @@ export default function LeadForm({
               required
               autoComplete="tel-national"
               inputMode="tel"
-              placeholder={PHONE_PLACEHOLDER}
+              placeholder={phonePlaceholderFor(countryIso2)}
               value={contact.phone}
               onChange={onPhoneChange}
               onBlur={() => setPhoneTouched(true)}

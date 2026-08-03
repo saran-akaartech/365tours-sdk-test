@@ -8,7 +8,7 @@ export default function DestinationsOffered({ name, items }: { name: string; ite
         <h2 className="font-serif text-3xl font-bold text-stone-900">
           Destinations Offered in {name}
         </h2>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((item) => (
             <div
               key={item}

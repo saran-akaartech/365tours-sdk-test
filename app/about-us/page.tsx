@@ -17,7 +17,7 @@ export default function AboutUsPage() {
       <main>
         <div className="mx-auto max-w-5xl px-6 pb-20 lg:px-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About Us</p>
-          <h1 className="mt-3 font-serif text-4xl font-bold text-stone-900 sm:text-5xl">
+          <h1 className="mt-3 font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Discover the world through us
           </h1>
 
@@ -50,8 +50,14 @@ export default function AboutUsPage() {
             </p>
           </div>
 
+          {/* Founder name — its own centered section */}
+          <div className="mt-4 text-center">
+            <p className="text-lg font-semibold text-stone-900">Jai Shankar</p>
+            <p className="text-sm text-stone-500">Founder</p>
+          </div>
+
           {/* Founder */}
-          <div className="mt-16 space-y-5 text-stone-600 leading-relaxed">
+          <div className="mt-4 space-y-5 text-stone-600 leading-relaxed">
             <p>
               Driven by an unwavering passion for travel and exploration, Jai has journeyed across
               the globe, experiencing diverse cultures, breathtaking landscapes, and unforgettable
@@ -75,46 +81,40 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          {/* Founder name — its own centered section */}
-          <div className="mt-12 text-center">
-            <p className="text-lg font-semibold text-stone-900">Jai Shankar</p>
-            <p className="text-sm text-stone-500">Founder</p>
-          </div>
-
-          {/* Founder photos — all 3 the same size, together */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
+          {/* Founder photos — same height, each keeps its own aspect ratio */}
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:h-64">
+            <div className="relative aspect-[2/3] w-full overflow-hidden rounded-2xl shadow-sm sm:h-full sm:w-auto">
               <Image
                 src="/about/jai-portrait.jpg"
                 alt="Jai Shankar — Founder, 365 Tours"
                 fill
                 sizes="(max-width: 640px) 100vw, 300px"
-                className="object-contain"
+                className="object-cover"
               />
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm sm:h-full sm:w-auto">
               <Image
                 src="/about/jai-egypt.jpg"
                 alt="Jai Shankar at the pyramids of Giza, Egypt"
                 fill
                 sizes="(max-width: 640px) 100vw, 300px"
-                className="object-contain"
+                className="object-cover"
               />
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm sm:h-full sm:w-auto">
               <Image
                 src="/about/jai-srilanka.jpg"
                 alt="Jai Shankar on the coast of Sri Lanka"
                 fill
                 sizes="(max-width: 640px) 100vw, 300px"
-                className="object-contain"
+                className="object-cover"
               />
             </div>
           </div>
 
           {/* Social responsibility */}
-          <div className="mt-16 rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-8 sm:p-10">
-            <h2 className="font-serif text-4xl font-bold text-stone-900 sm:text-5xl">
+          <div className="mt-6 rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-8 sm:p-10">
+            <h2 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
               Our Social Responsibility
             </h2>
             <p className="mt-3 text-stone-600">

@@ -15,13 +15,21 @@ const heroSlides: { name: string; tagline: string; image: string }[] = [
 
 export default function Hero() {
   const [active, setActive] = useState(0);
-  // Only images that have been shown are mounted, so the homepage loads ONE hero
-  // image (the LCP) up front; the rest stream in as the carousel advances.
-  const [loaded, setLoaded] = useState<number[]>([0]);
+  // Only the current slide + the next one up are mounted, so the homepage still
+  // loads just ONE hero image (the LCP) up front, but the *next* slide always
+  // gets a full interval's head start to fetch/decode before it's revealed —
+  // otherwise its <Image> hasn't painted yet when it becomes active, and the
+  // section's own hero-shimmer background (a dark teal, #132f33) flashes
+  // through for a moment.
+  const [loaded, setLoaded] = useState<number[]>(() =>
+    heroSlides.length > 1 ? [0, 1] : [0]
+  );
+  const markLoaded = (i: number) => setLoaded((l) => (l.includes(i) ? l : [...l, i]));
 
   const go = (i: number) => {
     setActive(i);
-    setLoaded((l) => (l.includes(i) ? l : [...l, i]));
+    markLoaded(i);
+    markLoaded((i + 1) % heroSlides.length);
   };
   const next = () => go((active + 1) % heroSlides.length);
 
@@ -29,9 +37,10 @@ export default function Hero() {
     if (heroSlides.length < 2) return;
     const id = setInterval(() => {
       setActive((i) => {
-        const next = (i + 1) % heroSlides.length;
-        setLoaded((l) => (l.includes(next) ? l : [...l, next]));
-        return next;
+        const nextIndex = (i + 1) % heroSlides.length;
+        markLoaded(nextIndex);
+        markLoaded((nextIndex + 1) % heroSlides.length);
+        return nextIndex;
       });
     }, 5000);
     return () => clearInterval(id);
@@ -55,19 +64,15 @@ export default function Hero() {
           />
         ) : null
       )}
-      {/* Warm "golden hour" overlay — dark at bottom-left for text legibility,
-          sunny amber glow toward the top-right. Kept light so the photo itself
-          still reads bright, not washed out. */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-stone-950/65 via-stone-900/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-amber-400/8" />
-
       {/* Content */}
       <div className="relative flex min-h-screen flex-col">
         {/* Spacer for navbar */}
         <div className="h-40 sm:h-44" />
 
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-14 pt-4 lg:px-10">
-          <div className="max-w-4xl">
+          {/* No scrim over the photo anymore — legibility comes from a drop
+              shadow on the text itself instead of darkening the image. */}
+          <div className="max-w-4xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
             {/* Prominent tagline */}
             <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-amber-300/40 bg-amber-400/15 px-5 py-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />

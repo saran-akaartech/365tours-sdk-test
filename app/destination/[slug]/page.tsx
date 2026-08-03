@@ -6,6 +6,7 @@ import ItineraryCarousel from "@/components/ItineraryCarousel";
 import QuickEnquiryCTA from "@/components/QuickEnquiryCTA";
 import DestinationsOffered from "@/components/DestinationsOffered";
 import TourGuarantee from "@/components/TourGuarantee";
+import Testimonials from "@/components/Testimonials";
 import TwelveReasons from "@/components/TwelveReasons";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ import SocialLinks from "@/components/SocialLinks";
 import DestinationViewTracker from "@/components/DestinationViewTracker";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
 import { getDestinationBySlug, getAllSlugs } from "@/lib/destinations";
+import { DESTINATION_REVIEWS } from "@/lib/destination-reviews";
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -91,17 +93,17 @@ export default function DestinationPage({ params }: { params: { slug: string } }
               className="object-cover object-center"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/85 from-0% via-white/40 via-35% to-transparent" />
-
           <div className="relative flex h-[560px] flex-col justify-end pb-10 pt-28 sm:h-[580px] sm:pb-14 sm:pt-32 lg:h-[650px]">
-            <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
+            {/* No scrim over the photo anymore — legibility comes from a drop
+                shadow on the text itself instead of a haze over the image. */}
+            <div className="mx-auto w-full max-w-7xl px-6 drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)] lg:px-10">
               {/* Breadcrumb */}
               <nav className="mb-6 flex items-center gap-2 text-xs text-stone-500">
                 <Link href="/" className="hover:text-stone-900 transition-colors">Home</Link>
                 <span>/</span>
                 <Link href="/#all-destinations" className="hover:text-stone-900 transition-colors">Destinations</Link>
                 <span>/</span>
-                <span className="text-stone-800">{dest.name}</span>
+                <span className="text-stone-500">{dest.name}</span>
               </nav>
 
               {/* Continent badge */}
@@ -156,13 +158,18 @@ export default function DestinationPage({ params }: { params: { slug: string } }
               <p className="mt-2 font-merri text-lg italic text-stone-600 sm:text-xl">
                 Well crafted based on your interest, time &amp; budget
               </p>
-              <div className="mt-8">
+              <div className="mt-10">
                 <ItineraryCarousel items={dest.itineraries} name={dest.name} />
               </div>
               <QuickEnquiryCTA name={dest.name} source="itinerary-enquiry" />
             </div>
           </section>
         )}
+
+        {/* ── REVIEWS (docs/TestimonialsDestinations.docx) — only the 6
+            destinations that document covers get their own curated set;
+            every other destination page has none, so nothing renders. ── */}
+        {DESTINATION_REVIEWS[dest.slug] && <Testimonials destinationSlug={dest.slug} />}
 
         {/* ── DESTINATIONS OFFERED ── */}
         <DestinationsOffered name={dest.name} items={dest.regions ?? []} />

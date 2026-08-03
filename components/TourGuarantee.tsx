@@ -10,14 +10,14 @@ const guarantees = [
 
 export default function TourGuarantee() {
   return (
-    <section id="tour-guarantee" className="bg-white pt-6 pb-10">
+    <section id="tour-guarantee" className="bg-white py-10">
       <div className="mx-auto max-w-6xl px-6 text-center lg:px-10">
         <h2 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
           Our Tour Guarantee &amp; Enhancement
         </h2>
 
         {/* 7 numbered guarantees — engraved-plaque cards */}
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-stone-200 bg-stone-200 sm:grid-cols-4 lg:grid-cols-7">
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-stone-200 bg-stone-200 sm:grid-cols-4 lg:grid-cols-7">
           {guarantees.map((g, i) => (
             <div
               key={g.n}

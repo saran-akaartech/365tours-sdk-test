@@ -15,14 +15,20 @@ const slides = [
 
 export default function IndiaHeroBackground() {
   const [active, setActive] = useState(0);
-  const [loaded, setLoaded] = useState<number[]>([0]);
+  // The next slide always gets a full interval's head start to fetch/decode
+  // before it's revealed — otherwise its <Image> hasn't painted yet when it
+  // becomes active, and the section's own hero-shimmer background (a dark
+  // teal, #132f33) flashes through for a moment.
+  const [loaded, setLoaded] = useState<number[]>(() => (slides.length > 1 ? [0, 1] : [0]));
+  const markLoaded = (i: number) => setLoaded((l) => (l.includes(i) ? l : [...l, i]));
 
   useEffect(() => {
     const id = setInterval(() => {
       setActive((i) => {
-        const next = (i + 1) % slides.length;
-        setLoaded((l) => (l.includes(next) ? l : [...l, next]));
-        return next;
+        const nextIndex = (i + 1) % slides.length;
+        markLoaded(nextIndex);
+        markLoaded((nextIndex + 1) % slides.length);
+        return nextIndex;
       });
     }, 5000);
     return () => clearInterval(id);

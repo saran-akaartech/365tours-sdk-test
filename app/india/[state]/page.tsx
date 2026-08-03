@@ -119,7 +119,7 @@ export default function IndiaStatePage({ params }: { params: { state: string } }
               <p className="mt-2 font-merri text-lg italic text-stone-600 sm:text-xl">
                 Well designed to suit your interest, time &amp; budget
               </p>
-              <div className="mt-8">
+              <div className="mt-10">
                 <ItineraryCarousel items={state.itineraries} name={state.name} />
               </div>
               <QuickEnquiryCTA name={state.name} source="india-itinerary-enquiry" />

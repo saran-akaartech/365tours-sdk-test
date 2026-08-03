@@ -26,7 +26,7 @@ export default function CsrPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">
             Our Social Responsibility
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-bold text-stone-900 sm:text-4xl">
+          <h1 className="mt-3 font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Giving back, one journey at a time
           </h1>
           <p className="mt-6 text-stone-600 leading-relaxed">
@@ -34,13 +34,13 @@ export default function CsrPage() {
             allocated towards:
           </p>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-1.5 sm:grid-cols-2">
             {csrInitiatives.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 rounded-2xl border border-stone-100 bg-stone-50 p-5"
+                className="flex items-center gap-2 rounded-2xl border border-stone-100 bg-stone-50 p-2"
               >
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
                   ✓
                 </span>
                 <p className="text-xs font-medium text-stone-800 sm:text-sm">{item}</p>

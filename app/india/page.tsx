@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import IndiaHeroBackground from "@/components/IndiaHeroBackground";
 import IndiaDestinationDirectory from "@/components/IndiaDestinationDirectory";
+import Testimonials from "@/components/Testimonials";
 import TwelveReasons from "@/components/TwelveReasons";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
@@ -51,6 +52,9 @@ export default function IndiaPage() {
         <section className="hero-shimmer relative h-[460px] overflow-hidden md:h-[650px]">
           <IndiaHeroBackground />
         </section>
+
+        {/* ── REVIEWS (docs/TestimonialsIndia.docx) ── */}
+        <Testimonials destinationSlug="india" />
 
         <IndiaDestinationDirectory />
         <TwelveReasons />
