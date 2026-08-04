@@ -161,15 +161,28 @@ export default function DestinationPage({ params }: { params: { slug: string } }
               <div className="mt-10">
                 <ItineraryCarousel items={dest.itineraries} name={dest.name} />
               </div>
-              <QuickEnquiryCTA name={dest.name} source="itinerary-enquiry" />
+              {!DESTINATION_REVIEWS[dest.slug] && (
+                <QuickEnquiryCTA name={dest.name} source="itinerary-enquiry" />
+              )}
             </div>
           </section>
         )}
 
         {/* ── REVIEWS (docs/TestimonialsDestinations.docx) — only the 6
             destinations that document covers get their own curated set;
-            every other destination page has none, so nothing renders. ── */}
-        {DESTINATION_REVIEWS[dest.slug] && <Testimonials destinationSlug={dest.slug} />}
+            every other destination page has none, so nothing renders.
+            For these, the lead form is placed right after reviews instead
+            of right after the itineraries. ── */}
+        {DESTINATION_REVIEWS[dest.slug] && (
+          <>
+            <Testimonials destinationSlug={dest.slug} />
+            <section className="bg-stone-50 pb-10">
+              <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                <QuickEnquiryCTA name={dest.name} source="itinerary-enquiry" />
+              </div>
+            </section>
+          </>
+        )}
 
         {/* ── DESTINATIONS OFFERED ── */}
         <DestinationsOffered name={dest.name} items={dest.regions ?? []} />
