@@ -123,7 +123,7 @@ export default function DestinationPage({ params }: { params: { slug: string } }
                     className="h-12 w-12 rounded-full object-cover ring-2 ring-stone-900/10 shadow-lg sm:h-14 sm:w-14"
                   />
                 )}
-                <h1 className="font-serif text-5xl font-bold text-stone-900 sm:text-6xl lg:text-7xl">
+                <h1 className="font-serif text-[38px] font-bold text-stone-900 sm:text-[48px] lg:text-[58px]">
                   {dest.name}
                 </h1>
               </div>
