@@ -15,7 +15,7 @@ export default function AboutUsPage() {
   return (
     <>
       <main>
-        <div className="mx-auto max-w-5xl px-6 pb-20 lg:px-10">
+        <div className="mx-auto max-w-5xl px-6 pb-20 pt-[25px] lg:px-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About Us</p>
           <h1 className="mt-3 font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Discover the world through us

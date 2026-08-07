@@ -13,7 +13,7 @@ export default function TermsOfUsePage() {
   return (
     <>
       <main>
-        <div className="mx-auto max-w-3xl px-6 pb-20 lg:px-10">
+        <div className="mx-auto max-w-5xl px-6 pb-20 pt-[25px] lg:px-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">Legal</p>
           <h1 className="mt-3 font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Terms of Use
@@ -21,7 +21,7 @@ export default function TermsOfUsePage() {
 
           <div className="mt-10 space-y-8 text-stone-600 leading-relaxed">
             <section>
-              <h2 className="font-serif text-base font-bold text-stone-900 sm:text-lg">
+              <h2 className="font-serif text-2xl font-bold text-stone-900">
                 Agreement between User and VRJ World Wide Holidays/ 365 Tours
               </h2>
               <p className="mt-3">
