@@ -17,7 +17,7 @@ export default function TourGuarantee() {
         </h2>
 
         {/* 7 numbered guarantees — engraved-plaque cards */}
-        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-stone-200 bg-stone-200 sm:grid-cols-4 lg:grid-cols-7">
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-stone-200 bg-stone-200 sm:grid-cols-4 lg:grid-cols-7" style={{ marginTop: '30px' }}>
           {guarantees.map((g, i) => (
             <div
               key={g.n}
@@ -38,7 +38,7 @@ export default function TourGuarantee() {
         </div>
 
         {/* Transparent pricing guarantee, front and centre */}
-        <div className="mx-auto mt-14 max-w-2xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-6 sm:p-8">
+        <div className="mx-auto mt-10 max-w-2xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-[30px]">
           <h3 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Our Transparent Pricing Guarantee
           </h3>

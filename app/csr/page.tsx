@@ -49,13 +49,13 @@ export default function CsrPage() {
           </ul>
 
           {/* Proof of impact — a sapling planted on 365 Tours' behalf */}
-          <div className="-mx-6 mt-10 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 sm:-mx-10 lg:mx-0 lg:max-w-4xl">
+          <div className="-mx-6 mt-10 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 sm:-mx-10 lg:-mx-[103px]">
             <div className="relative aspect-[16/10] w-full">
               <Image
                 src="/about/pavithra-tree.jpg"
                 alt="A sapling planted by 365 Tours for a better environment"
                 fill
-                sizes="(max-width: 640px) 100vw, 700px"
+                sizes="(max-width: 640px) 100vw, 900px"
                 className="object-contain"
               />
             </div>

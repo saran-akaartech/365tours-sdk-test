@@ -132,7 +132,7 @@ export default function Hero() {
         {/* Social media — its own row at the very bottom of the hero, in normal
             flow (not absolutely positioned) so it can never overlap the
             vertically-centred caption/carousel controls above it. */}
-        <div className="mx-auto w-full max-w-7xl px-6 pb-8 lg:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 pb-10 lg:px-10">
           <SocialLinks />
         </div>
 
