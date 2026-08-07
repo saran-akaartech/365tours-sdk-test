@@ -3,11 +3,13 @@
 import { useState, useEffect, type FormEvent } from "react";
 import {
   AsYouType,
+  getExampleNumber,
   isValidPhoneNumber,
   parsePhoneNumberFromString,
   validatePhoneNumberLength,
   type CountryCode,
 } from "libphonenumber-js/min";
+import examplePhoneNumbers from "libphonenumber-js/examples.mobile.json";
 import { trackLeadConversion } from "@/lib/analytics";
 import { destinations } from "@/lib/destinations";
 import { indiaStateDetails } from "@/lib/india-states";
@@ -31,18 +33,35 @@ const MONTHS = [
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+// Many countries (GB, AE, FR, DE, IT…) only produce space/dash-grouped
+// output from AsYouType when the input includes their national trunk prefix
+// ("0"), which our form never collects — the country-code dropdown already
+// covers that role. Retry with a synthetic leading 0 whenever the plain
+// digits come back as one ungrouped blob, and strip it back off the result;
+// countries that group fine without it (India, the NANP countries…) are
+// unaffected since the plain attempt already succeeds.
 function formatPhoneDigits(digits: string, iso2: CountryCode): string {
-  return digits ? new AsYouType(iso2).input(digits) : "";
+  if (!digits) return "";
+  const plain = new AsYouType(iso2).input(digits);
+  const withTrunkPrefix = new AsYouType(iso2).input(`0${digits}`);
+  if (/[\s-]/.test(withTrunkPrefix) && !/[\s-]/.test(plain)) {
+    return withTrunkPrefix.replace(/^0/, "");
+  }
+  return plain;
 }
 
-// A placeholder shaped like a real number for whichever country is currently
-// selected — feeding a long run of a repeated digit through AsYouType gets
-// its grouping/length right without needing a per-country example-number
-// dataset. Previously this was a single constant computed once for India,
-// so switching the country dropdown left an Indian-shaped placeholder
-// showing under every other country.
+// A placeholder shaped like a real, correctly-sized number for whichever
+// country is currently selected. This used to be built by feeding 14 repeated
+// digits through AsYouType to infer grouping/length without a per-country
+// dataset — but 14 digits is longer than any real national number, so the
+// formatter gave up and returned "555555555555555" as one unbroken run
+// instead of a realistic-looking placeholder. Real per-country example
+// numbers (a 4KB dataset already shipped alongside libphonenumber-js) give
+// both the correct length and correct grouping directly.
 function phonePlaceholderFor(iso2: CountryCode): string {
-  return formatPhoneDigits("5".repeat(14), iso2);
+  const example = getExampleNumber(iso2, examplePhoneNumbers);
+  if (example) return formatPhoneDigits(example.nationalNumber, iso2);
+  return formatPhoneDigits("98765432", iso2);
 }
 
 export default function LeadForm({

@@ -135,7 +135,7 @@ export default function DestinationPage({ params }: { params: { slug: string } }
         </section>
 
         {/* ── BRIEF DESCRIPTION (itineraries come right after this) ── */}
-        <section className="bg-white py-10">
+        <section className="bg-white pt-10 pb-0 -mb-1">
           <div className="mx-auto max-w-5xl px-6 lg:px-10">
             <p className="font-merri text-lg italic leading-relaxed text-stone-700 sm:text-xl">
               {dest.description}
