@@ -4,6 +4,8 @@ import HeroImage from "@/components/HeroImage";
 import Link from "next/link";
 import ItineraryCarousel from "@/components/ItineraryCarousel";
 import QuickEnquiryCTA from "@/components/QuickEnquiryCTA";
+import TourGuarantee from "@/components/TourGuarantee";
+import Testimonials from "@/components/Testimonials";
 import DestinationsOffered from "@/components/DestinationsOffered";
 import TwelveReasons from "@/components/TwelveReasons";
 import TrustBar from "@/components/TrustBar";
@@ -108,6 +110,9 @@ export default function IndiaStatePage({ params }: { params: { state: string } }
           </div>
         </section>
 
+        {/* ── TOUR GUARANTEE & TRANSPARENT PRICING (same as the home page) ── */}
+        <TourGuarantee />
+
         {/* ── SIGNATURE ITINERARIES ── */}
         {state.itineraries.length > 0 && (
           <section className="bg-stone-50 py-10">
@@ -126,6 +131,9 @@ export default function IndiaStatePage({ params }: { params: { state: string } }
             </div>
           </section>
         )}
+
+        {/* ── REVIEWS (docs/TestimonialsIndia.docx — same set as the /india hub page) ── */}
+        <Testimonials destinationSlug="india" />
 
         {/* ── DESTINATIONS OFFERED ── */}
         <DestinationsOffered name={state.name} items={cities} />

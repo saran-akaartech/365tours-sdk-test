@@ -10,7 +10,7 @@ export default function IndiaDestinationDirectory() {
         {/* Header */}
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 className="-mt-3 font-brush leading-none text-stone-900 sm:-mt-5">
-            <span className="text-7xl sm:text-8xl">500</span>{" "}
+            <span className="text-7xl sm:text-8xl">500<span className="-ml-3 inline-block translate-y-1 align-middle text-8xl sm:-ml-4 sm:translate-y-1.5 sm:text-9xl">+</span></span>{" "}
             <span className="text-5xl sm:text-7xl">Destinations</span>
           </h2>
           <p className="mt-2 font-merri text-lg italic text-stone-600 sm:text-xl">

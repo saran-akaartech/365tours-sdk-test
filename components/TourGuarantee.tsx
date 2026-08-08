@@ -4,8 +4,8 @@ const guarantees = [
   { n: 3, title: "Menu Design", detail: "Prior table reservation" },
   { n: 4, title: "Off the Beaten Path", detail: "Other than must-see places" },
   { n: 5, title: "Exclusive Discounts", detail: "On shopping, spa…" },
-  { n: 6, title: "Room Upgrade", detail: "At select countries" },
-  { n: 7, title: "Early Check-in", detail: "With breakfast, at select countries" },
+  { n: 6, title: "Room Upgrade", detail: "At select destinations" },
+  { n: 7, title: "Early Check-in", detail: "With breakfast, at select destinations" },
 ];
 
 export default function TourGuarantee() {
@@ -38,7 +38,7 @@ export default function TourGuarantee() {
         </div>
 
         {/* Transparent pricing guarantee, front and centre */}
-        <div className="mx-auto mt-10 max-w-2xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-[30px]">
+        <div className="mx-auto mt-10 max-w-4xl rounded-3xl bg-gradient-to-br from-brand-50 to-amber-50 p-[30px]">
           <h3 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
             Our Transparent Pricing Guarantee
           </h3>
@@ -48,8 +48,10 @@ export default function TourGuarantee() {
                 ✓
               </span>
               <p className="text-sm text-stone-700 sm:text-base">
-                Find a <span className="font-semibold">lower price after you book</span> — exactly
-                as per the package inclusions? We refund the difference.
+                <span className="sm:whitespace-nowrap">
+                  Find a <span className="font-semibold">lower price after you book</span>
+                </span>{" "}
+                — exactly as per the package inclusions? We refund the difference.
               </p>
             </li>
             <li className="flex items-start gap-3">
@@ -57,8 +59,10 @@ export default function TourGuarantee() {
                 ✓
               </span>
               <p className="text-sm text-stone-700 sm:text-base">
-                Find a <span className="font-semibold">lower price before you book</span> — exactly
-                as per the package inclusions? We charge you 5% less.
+                <span className="sm:whitespace-nowrap">
+                  Find a <span className="font-semibold">lower price before you book</span>
+                </span>{" "}
+                — exactly as per the package inclusions? We charge you 5% less.
               </p>
             </li>
           </ul>

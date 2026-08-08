@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import IndiaHeroBackground from "@/components/IndiaHeroBackground";
 import IndiaDestinationDirectory from "@/components/IndiaDestinationDirectory";
+import TourGuarantee from "@/components/TourGuarantee";
 import Testimonials from "@/components/Testimonials";
 import TwelveReasons from "@/components/TwelveReasons";
 import TrustBar from "@/components/TrustBar";
@@ -52,6 +53,9 @@ export default function IndiaPage() {
         <section className="hero-shimmer relative h-[460px] overflow-hidden md:h-[650px]">
           <IndiaHeroBackground />
         </section>
+
+        {/* ── TOUR GUARANTEE & TRANSPARENT PRICING (same as the home page) ── */}
+        <TourGuarantee />
 
         {/* ── REVIEWS (docs/TestimonialsIndia.docx) ── */}
         <Testimonials destinationSlug="india" />

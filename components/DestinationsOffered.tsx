@@ -1,12 +1,12 @@
 import Icon from "@/components/Icon";
 
-export default function DestinationsOffered({ name, items }: { name: string; items: string[] }) {
+export default function DestinationsOffered({ items }: { name: string; items: string[] }) {
   if (!items.length) return null;
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <h2 className="font-serif text-3xl font-bold text-stone-900">
-          Destinations Offered in {name}
+          Destinations Offered
         </h2>
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((item) => (
