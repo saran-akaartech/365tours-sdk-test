@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: "standalone",
   images: {
     // Skip the sharp resize/re-encode pass in `next dev` — it runs synchronously
     // on first request per image/size combo, which is what causes the scroll-load
