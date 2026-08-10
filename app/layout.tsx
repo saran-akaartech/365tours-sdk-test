@@ -103,6 +103,21 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${brush.variable} ${merri.variable} ${oswald.variable} ${cinzel.variable} ${heebo.variable} ${lato.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w){
+        var k="nudgify",n=w[k]||(w[k]={});
+        n.uuid="8ef0e169-0041-4dc9-8d5b-6bc2c0cdb04f";
+        var d=document,s=d.createElement("script");
+        s.src="https://pixel.nudgify.com/pixel.js";
+        s.async=1;
+        s.charset="utf-8";
+        d.getElementsByTagName("head")[0].appendChild(s)
+    })(window)`,
+          }}
+        />
+      </head>
       <body>
         <Navbar />
         {children}
