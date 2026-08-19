@@ -11,7 +11,7 @@ import ReviewsGrid, { GoogleG, Stars, type CuratedReview } from "@/components/Re
 const GOOGLE_REVIEWS_URL =
   "https://www.google.com/search?q=365+tours+chennai#lrd=0x3a526645a176a84d:0xa79d678833fd18ff,1";
 const RATING = "4.9";
-const RATING_TOTAL = "252";
+const RATING_TOTAL = "253";
 
 const reviews = [
   { name: "Parvathi Sathasivam", trip: "Sri Lanka", slug: "sri-lanka", avatar: "PS",
