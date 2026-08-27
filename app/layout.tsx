@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     })(window)`,
           }}
         />
-        <script src="https://config.axilrate.com/sdk/web.js"></script>
+        <script src="https://client002.axilrate.com/sdk/web.js"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.CampaignSDK.init({
