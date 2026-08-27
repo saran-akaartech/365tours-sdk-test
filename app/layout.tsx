@@ -122,7 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: `window.CampaignSDK.init({
   writeKey: "cpk_523846389f001536637eeb451e8add9c1214f4fb11b01f53",
-  // ingestUrl: "https://config.axilrate.com"
+  ingestUrl: "https://events.axilrate.com"
 });`,
           }}
         />
