@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     })(window)`,
           }}
         />
-        <script src="https://config.axilrate.com/sdk/web.js"></script>
+        {/* <script src="https://config.axilrate.com/sdk/web.js"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.CampaignSDK.init({
@@ -125,7 +125,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ingestUrl: "https://events.axilrate.com"
 });`,
           }}
+        /> */}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function (w, d, s) {
+  var q = [];
+  function stub() { q.push(arguments); }
+  stub.q = q;
+  w.campaign = w.campaign || stub;
+})(window, document, 'script')`,
+          }}
         />
+        <script async
+          src="https://config.axilrate.com/sdk/campaign.min.js"
+          data-write-key="cpk_523846389f001536637eeb451e8add9c1214f4fb11b01f53"
+        ></script>
 
       </head>
       <body>
@@ -134,8 +149,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BackToTop />
         <FloatingWhatsApp />
         <CookieConsent />
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
