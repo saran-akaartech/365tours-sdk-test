@@ -1,80 +1,14 @@
 /**
- * Campaign Web Push Service Worker
- * Place at the root scope — must be served from / (or configure serviceworker scope).
- * Handles push events, notification clicks, and subscription change events.
+ * Campaign Web Push Service Worker — stub.
  *
- * Version: 1.0.0
+ * Host THIS file at your site's own origin (same path you'd otherwise put the full
+ * campaign-sw.js at, e.g. /campaign-push/campaign-sw.js — service workers can only be
+ * registered from a same-origin URL, that part can't be delegated). Its only job is to
+ * pull in the real, centrally-hosted logic at runtime, so updates on our end reach you
+ * automatically without re-copying anything.
+ *
+ * If you'd rather self-host the full script instead (no dependency on this endpoint
+ * staying up, but you own re-copying it whenever it changes), use campaign-sw.js
+ * directly in place of this stub — both are valid, pick one.
  */
-
-'use strict';
-
-// ── Push received ─────────────────────────────────────────────────────────────
-
-self.addEventListener('push', (event) => {
-  if (!event.data) return;
-
-  let payload;
-  try {
-    payload = event.data.json();
-  } catch {
-    payload = { title: event.data.text(), body: '' };
-  }
-
-  const title   = payload.title  || 'Notification';
-  const options = {
-    body:    payload.body  || '',
-    icon:    payload.icon  || '/icons/icon-192.png',
-    badge:   payload.badge || '/icons/badge-72.png',
-    data:    { url: payload.data?.url || '/' },
-    vibrate: [200, 100, 200],
-    requireInteraction: false,
-  };
-
-  event.waitUntil(self.registration.showNotification(title, options));
-});
-
-// ── Notification click ────────────────────────────────────────────────────────
-
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  const url = event.notification.data?.url || '/';
-
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
-      for (const client of windowClients) {
-        if (client.url === url && 'focus' in client) {
-          return client.focus();
-        }
-      }
-      if (clients.openWindow) {
-        return clients.openWindow(url);
-      }
-    })
-  );
-});
-
-// ── Subscription change (browser auto-refreshed the subscription) ─────────────
-
-self.addEventListener('pushsubscriptionchange', (event) => {
-  event.waitUntil(
-    self.registration.pushManager.subscribe({
-      userVisibleOnly:      true,
-      applicationServerKey: event.oldSubscription?.options?.applicationServerKey,
-    }).then((newSubscription) => {
-      // Notify the page so it can re-register the new subscription
-      return clients.matchAll({ type: 'window' }).then((windowClients) => {
-        for (const client of windowClients) {
-          client.postMessage({
-            type: 'CAMPAIGN_SUBSCRIPTION_CHANGED',
-            subscription: newSubscription.toJSON(),
-          });
-        }
-      });
-    })
-  );
-});
-
-// ── Install & activate (no caching — this is a push-only SW) ─────────────────
-
-self.addEventListener('install',  () => self.skipWaiting());
-self.addEventListener('activate', (event) => event.waitUntil(clients.claim()));
+importScripts('https://config.axilrate.com/sdk/campaign-sw.js');
