@@ -8,6 +8,7 @@ import BackToTop from "@/components/BackToTop";
 import CookieConsent from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
 import { SITE_URL } from "@/lib/site";
+import Script from "next/script";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -137,10 +138,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 })(window, document, 'script')`,
           }}
         />
-        <script async
+        {/* <script async
           src="https://config.axilrate.com/sdk/campaign.min.js"
           data-write-key="cpk_523846389f001536637eeb451e8add9c1214f4fb11b01f53"
-        ></script>
+        ></script> */}
+<Script
+  src="https://config.axilrate.com/sdk/campaign.min.js"
+  strategy="afterInteractive"
+  data-write-key="cpk_523846389f001536637eeb451e8add9c1214f4fb11b01f53"
+  data-support-widget="true"
+/>
 
       </head>
       <body>
